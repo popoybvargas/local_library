@@ -1,3 +1,4 @@
+require( 'dotenv' ).config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -11,7 +12,7 @@ var app = express();
 
 /** set up mongoose connection */
 const mongoose = require( 'mongoose' );
-const mongoDB = 'mongodb://popoyvargas:trudg1ng-trampLes@ds131971.mlab.com:31971/local_library';
+const mongoDB = process.env.MONGODB_URI;
 mongoose.connect( mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
