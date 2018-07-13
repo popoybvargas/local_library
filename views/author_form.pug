@@ -6,7 +6,7 @@ block content
     form( method='POST', action='' )
         div.form-group
             label( for='first_name' ) First Name:&nbsp;
-            input#first_name.form-control( type='text', placeholder='First name (Christian)', name='first_name' required='true', value=( undefined === author ? '' : author.first_name ) )
+            input#first_name.form-control( type='text', placeholder='First name (Christian)', name='first_name', required='true', value=( undefined === author ? '' : author.first_name ) )
         div.form-group
             label( for='family_name' ) Family Name:&nbsp;
             input#family_name.form-control( type='text', placeholder='Family name (surname)', name='family_name' required='true', value=( undefined === author ? '' : author.family_name ) )
