@@ -3,6 +3,7 @@ module.exports = {
     rules:
     {
         "brace-style": [ "error", "allman", { "allowSingleLine": true } ],
+        "camelcase": "warn",
         "eol-last": [ "error", "never" ],
         // allow async-await
         'generator-star-spacing': 'off',
@@ -16,6 +17,6 @@ module.exports = {
         "semi": [ "error", "always" ],
         "space-before-function-paren": [ "warn", "always" ],
         "space-in-parens": [ "error", "always", { "exceptions": [ "{}", "[]", "()", "empty" ] } ],
-        "space-unary-ops": [ "error", { "words": true, "nonwords": true } ]
+        "space-unary-ops": [ "error", { "words": true, "nonwords": true, "overrides": { "++": false, "-": false } } ]
     }
 };

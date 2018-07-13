@@ -1,4 +1,5 @@
 const mongoose = require( 'mongoose' );
+const moment = require( 'moment' );
 
 const Schema = mongoose.Schema;
 
@@ -34,6 +35,16 @@ AuthorSchema
     .get( function ()
     {
         return `/catalog/author/${this._id}`;
+    });
+
+// virtual for author's lifespan
+AuthorSchema
+    .virtual( 'lifespan' )
+    .get( function ()
+    {
+        const dob = this.date_of_birth ? moment( this.date_of_birth ).format( 'MMMM Do, YYYY' ) : null;
+        const dod = this.date_of_death ? moment( this.date_of_death ).format( 'MMMM Do, YYYY' ) : '';
+        return dob ? `${dob} - ${dod}` : null;
     });
 
 // export model
