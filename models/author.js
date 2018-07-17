@@ -42,10 +42,27 @@ AuthorSchema
     .virtual( 'lifespan' )
     .get( function ()
     {
-        const dob = this.date_of_birth ? moment( this.date_of_birth ).format( 'MMMM Do, YYYY' ) : null;
+        let lifespan = this.date_of_birth ? moment( this.date_of_birth ).format( 'MMMM Do, YYYY' ) : '';
         const dod = this.date_of_death ? moment( this.date_of_death ).format( 'MMMM Do, YYYY' ) : '';
-        return dob ? `${dob} - ${dod}` : null;
+        lifespan += dod ? ` - ${dod}` : '';
+        return lifespan;
     });
+
+// virtual for display of DOB
+AuthorSchema
+    .virtual( 'dob_formatted' )
+    .get( function ()
+    {
+        return moment( this.date_of_birth ).format( 'YYYY-MM-DD' );
+    });
+
+    // virtual for display of DOD
+    AuthorSchema
+        .virtual( 'dod_formatted' )
+        .get( function ()
+        {
+            return moment( this.date_of_death ).format( 'YYYY-MM-DD' );
+        });
 
 // export model
 module.exports = mongoose.model( 'Author', AuthorSchema );

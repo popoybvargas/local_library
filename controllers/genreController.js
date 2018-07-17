@@ -13,7 +13,7 @@ exports.genre_list = ( req, res, next ) =>
         {
             if ( err ) return next( err );
             // successful, so render
-            res.render( 'genre_list', { title: 'Genre List', genreList });
+            res.render( 'genre/genre_list', { title: 'Genre List', genreList });
         });
 };
 
@@ -35,14 +35,14 @@ exports.genre_detail = ( req, res, next ) =>
             return next( err );
         }
         // successful, so render
-        res.render( 'genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books });
+        res.render( 'genre/genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books });
     });
 };
 
 // display Genre create form on GET
 exports.genre_create_get = ( req, res, next ) =>
 {
-    res.render( 'genre_form', { title: 'Create Genre' });
+    res.render( 'genre/genre_form', { title: 'Create Genre' });
 };
 
 // handle Genre create on POST
@@ -66,7 +66,7 @@ exports.genre_create_post =
         if ( ! errors.isEmpty())
         {
             // there are errors. render the form again with sanitized values/error messages
-            return res.render( 'genre_form', { title: 'Create Genre', genre, errors: errors.array() });
+            return res.render( 'genre/genre_form', { title: 'Create Genre', genre, errors: errors.array() });
         }
         else
         {
