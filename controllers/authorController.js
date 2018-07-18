@@ -178,7 +178,7 @@ exports.author_update_post =
         if ( ! errors.isEmpty())
         {
             // there are errors. render form again with sanitized values/errors messages
-            return res.render( 'author/author_form', { title: 'Create Author', author: req.body, errors: errors.array() });
+            return res.render( 'author/author_form', { title: 'Update Author', author: req.body, errors: errors.array() });
         }
         else
         {

@@ -184,7 +184,7 @@ exports.book_delete_get = ( req, res, next ) =>
         {
             if ( err ) return next( err );
     
-            if ( results.book == null ) res.redirect( '/catalog/book' ); // no results
+            if ( results.book == null ) res.redirect( '/catalog/books' ); // no results
             // successful, so render
             res.render( 'book/book_delete', { title: 'Delete Book', book: results.book, bookinstances: results.bookinstances });
         });
